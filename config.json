@@ -1,0 +1,71 @@
+{
+  "log": {
+    "level": "debug"
+  },
+
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "127.0.0.1",
+      "listen_port": 10808,
+      "sniff": true,
+      "sniff_override_destination": false
+    }
+  ],
+
+  "outbounds": [
+    {
+      "type": "socks",
+      "tag": "overtls-proxy",
+      "server": "127.0.0.1",
+      "server_port": 40000
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    }
+  ],
+  "dns": {
+    "servers": [
+      {
+        "address": "223.5.5.5",
+        "detour": "direct"
+      },
+      {
+        "address": "8.8.8.8",
+        "detour": "overtls-proxy"
+      }
+    ]
+  },
+
+  "route": {
+    "final": "overtls-proxy",
+    "auto_detect_interface": true,
+    "rules": [
+      { "protocol": "dns", "outbound": "dns-out" },
+      { "ip_is_private": true, "outbound": "direct" },
+      {
+        "domain_suffix": [
+          "wechat.com",
+          "weixin.qq.com",
+          "wx.qq.com",
+          "wx2.qq.com",
+          "weixinbridge.com",
+          "qpic.cn",
+          "qlogo.cn",
+          "gtimg.com",
+          "gtimg.cn",
+          "mmstat.com",
+          "servicewechat.com",
+          "tenpay.com"
+        ],
+        "outbound": "direct"
+      },
+    ]
+  }
+}
