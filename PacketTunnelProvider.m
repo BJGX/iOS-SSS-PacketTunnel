@@ -68,10 +68,7 @@
 
 - (void)startTunnelWithOptions:(NSDictionary *)options completionHandler:(void (^)(NSError *))completionHandler {
     [self openLog];
-    NSLog(@"starting potatso tunnel...");
     [self updateUserDefaults];
-    
-    
     [[SimpleLogger sharedLogger] logWithLevel:LogLevelInfo category:@"NE" message:@"starting potatso tunnel..."];
     
     NSError *error = [[TunnelInterface sharedInterface] setupWithPacketTunnelFlow:self.packetFlow];
@@ -275,7 +272,6 @@
     settings.MTU = @(TunnelMTU);
     NEProxySettings* proxySettings = [[NEProxySettings alloc] init];
     NSString *proxyServerName = @"127.0.0.1";
-//    NSAssert(_httpProxyPort > 0, @"_httpProxyPort > 0");
 
     proxySettings.HTTPEnabled = YES;
     proxySettings.HTTPServer = [[NEProxyServer alloc] initWithAddress:proxyServerName port:10808];
