@@ -1,12 +1,8 @@
-//
-//  PacketTunnelProvider.h
-//  PacketTunnel
-//
-//  Created by  on 2025/7/30.
-//
-
-#import <NetworkExtension/NetworkExtension.h>
-
-@interface PacketTunnelProvider : NEPacketTunnelProvider
+#if __has_include(<TunnelRuntime/TunnelRuntime.h>)
+#import <TunnelRuntime/TunnelRuntime.h>
+#else
+#import "TunnelRuntime.h"
+#endif
+@interface PacketTunnelProvider : SSSTunnelPacketTunnelProvider
 
 @end
