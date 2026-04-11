@@ -1,0 +1,8 @@
+# Claude Code
+.claude/
+
+# Entitlements
+*.entitlements
+
+# Plist files
+*.plist
