@@ -38,6 +38,10 @@ FOUNDATION_EXPORT NSString* _Nonnull MobileGetLastError(void);
 
 FOUNDATION_EXPORT NSString* _Nonnull MobileGetSingBoxVersion(void);
 
+FOUNDATION_EXPORT int32_t MobileGetTunnelFileDescriptor(void);
+
+FOUNDATION_EXPORT void MobileSetTunFD(int32_t fd);
+
 FOUNDATION_EXPORT long MobileStart(NSString* _Nullable configJSON, NSString* _Nullable workingPath);
 
 FOUNDATION_EXPORT void MobileStartGC(void);
