@@ -6,3 +6,4 @@
 
 # Plist files
 *.plist
+.DS_Store
